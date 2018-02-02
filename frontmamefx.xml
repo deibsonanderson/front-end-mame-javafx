@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><emulator>
+	<games>
+		<game name="dino" description="Cadillacs and Dinosaurs" />			
+		<game name="ssf2" description="Super Street Fighter 2" emucustom="mame2.exe"/>
+		<game name="goldnaxe" emucustom="mameuifx32.0.128.exe" />
+	</games>
+	<config>
+		<emupath>.\mame\</emupath>
+		<exec>mame.exe</exec>
+		<height>400</height>
+		<imagepath>.\mame\imagem2\</imagepath>
+		<title>Front End Mame JavaFX</title>
+		<width>600</width>
+		<imageext>.png</imageext>
+		<imagedefaut>imageNotFound</imagedefaut>
+		<videoext>.flv</videoext>
+		<videopath>.\mame\video2\</videopath>
+		<logopath>.\mame\logo\</logopath>
+		<videomute>false</videomute>
+		<eixovideox>0</eixovideox>
+		<eixovideoy>0</eixovideoy>
+		<heightvideo>480</heightvideo>
+		<maximized>false</maximized>
+		<widthvideo>640</widthvideo>
+		<windowbar>true</windowbar>
+		<eixologox>100</eixologox>
+		<eixologoy>100</eixologoy>
+		<heightlogo>200</heightlogo>
+		<widthlogo>400</widthlogo>
+	<eixoimagex>0</eixoimagex><eixoimagey>0</eixoimagey><heightimage>480</heightimage><widthimage>640</widthimage></config>
+</emulator>
