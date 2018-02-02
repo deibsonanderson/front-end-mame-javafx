@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<emulator>
+	<games>
+		<game name="dino">
+			<description>Cadillacs and Dinosaurs</description>
+		</game>
+		<game name="ssf2">
+			<description>Super Street Fighter 2</description>
+		</game>
+		<game name="goldnaxe">
+			<description>Golden Axe</description>
+		</game>
+	</games>
+	<config>
+		<emupath>.\</emupath>
+		<exec>mame.exe</exec>
+		<height>400</height>
+		<imagepath>.\snap\</imagepath>
+		<title>Front End Mame JavaFX</title>
+		<width>600</width>
+		<imageext>.png</imageext>
+		<imagedefaut>imageNotFound</imagedefaut>
+		<videoext>.flv</videoext>
+		<videopath>.\video\</videopath>
+		<logopath>.\logo\</logopath>
+		<videomute>false</videomute>
+		<eixovideox>0</eixovideox>
+		<eixovideoy>0</eixovideoy>
+		<heightvideo>480</heightvideo>
+		<maximized>false</maximized>
+		<widthvideo>640</widthvideo>
+		<windowbar>true</windowbar>
+		<eixologox>0</eixologox>
+		<eixologoy>0</eixologoy>
+		<heightlogo>200</heightlogo>
+		<widthlogo>400</widthlogo>
+	</config>
+</emulator>
