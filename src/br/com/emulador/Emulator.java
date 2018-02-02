@@ -28,7 +28,7 @@ public class Emulator {
 	public void run(final Game game, final String path, final String exec) {
 
 		final StringBuilder cmd = new StringBuilder(path);
-		cmd.append(emulatorCurtomCheck(game, exec));
+		cmd.append(emulatorCurtomCheck(game,path, exec));
 		cmd.append(ESPACO);
 		cmd.append(game.getName());
 
@@ -47,10 +47,12 @@ public class Emulator {
 	 * @param exec the exec
 	 * @return the string
 	 */
-	private String emulatorCurtomCheck(final Game game,final String exec){
+	private String emulatorCurtomCheck(final Game game,final String path,final String exec){
 		String retorno = exec;
 		if(game.getEmulator() != null && !game.getEmulator().isEmpty()){
-			retorno = game.getEmulator();
+			if(new File(path+game.getEmulator()).exists()){
+				retorno = game.getEmulator();
+			}
 		}
 		return retorno;
 	}	

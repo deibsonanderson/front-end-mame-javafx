@@ -27,6 +27,7 @@ import org.xml.sax.SAXException;
 import br.com.emulador.Config;
 import br.com.emulador.Game;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Xml.
  *
@@ -115,7 +116,8 @@ public class Xml {
 	/** The Constant TAG_WINDOW_BAR. */
 	private static final String TAG_WINDOW_BAR = "windowbar";
 	
-	
+	/** The Constant TAG_ON_TOP. */
+	private static final String TAG_ON_TOP = "ontop";
 	
 	/** The Constant TAG_WIDTH_LOGO. */
 	private static final String TAG_WIDTH_IMAGE = "widthimage";
@@ -129,7 +131,18 @@ public class Xml {
 	/** The Constant TAG_EIXO_LOGO_X. */
 	private static final String TAG_EIXO_IMAGE_X = "eixoimagex";
 
+	/** The Constant TAG_EMU_CUSTOM. */
+	private static final String TAG_EMU_CUSTOM = "emucustom";
 
+	/** The Constant TAG_DESCRIPTION. */
+	private static final String TAG_DESCRIPTION = "description";
+	
+	/** The yes. */
+	private static String YES = "yes";
+	
+	/** The no. */
+	private static String NO = "no";
+	
 	/**
 	 * Carregar.
 	 *
@@ -155,7 +168,7 @@ public class Xml {
 			final int totalGames = doc.getElementsByTagName(TAG_GAME).getLength();
 			for (int f = 0; f < totalGames; f++) {
 				final Element game = (Element) doc.getElementsByTagName(TAG_GAME).item(f);
-				gameObj = new Game(game.getAttribute(TAG_NAME),game.getAttribute("emucustom"),game.getAttribute("description"));
+				gameObj = new Game(game.getAttribute(TAG_NAME),game.getAttribute(TAG_EMU_CUSTOM),game.getAttribute(TAG_DESCRIPTION));
 				games.add(gameObj);
 			}
 		} catch (final Exception ex) {
@@ -222,7 +235,7 @@ public class Xml {
 			config.setVideoPath(this.getTagElement(eElement, TAG_VIDEOPATH, ".\\video\\", doc, path + file));
 
 			config.setLogoPath(this.getTagElement(eElement, TAG_LOGOPATH, ".\\logo\\", doc, path + file));
-			config.setVideoMute(this.getTagElement(eElement, TAG_VIDEO_MUTE, "false", doc, path + file));
+			config.setVideoMute(this.getTagElement(eElement, TAG_VIDEO_MUTE, NO, doc, path + file));
 
 			config.setEixoVideoX(
 					Integer.valueOf(this.getTagElement(eElement, TAG_EIXO_VIDEO_X, "0", doc, path + file)));
@@ -230,11 +243,12 @@ public class Xml {
 					Integer.valueOf(this.getTagElement(eElement, TAG_EIXO_VIDEO_Y, "0", doc, path + file)));
 			config.setHeightVideo(
 					Integer.valueOf(this.getTagElement(eElement, TAG_HEIGHT_VIDEO, "480", doc, path + file)));
-			config.setMaximized(this.getTagElement(eElement, TAG_MAXIMIZED, "false", doc, path + file));
+			config.setMaximized(this.getTagElement(eElement, TAG_MAXIMIZED, NO, doc, path + file));
 			config.setWidthVideo(
 					Integer.valueOf(this.getTagElement(eElement, TAG_WIDTH_VIDEO, "640", doc, path + file)));
 
-			config.setWindowBar(this.getTagElement(eElement, TAG_WINDOW_BAR, "true", doc, path + file));
+			config.setWindowBar(this.getTagElement(eElement, TAG_WINDOW_BAR, YES, doc, path + file));
+			config.setOnTop(this.getTagElement(eElement, TAG_ON_TOP, YES, doc, path + file));
 			config.setEixoLogoX(Integer.valueOf(this.getTagElement(eElement, TAG_EIXO_LOGO_X, "0", doc, path + file)));
 			config.setEixoLogoY(Integer.valueOf(this.getTagElement(eElement, TAG_EIXO_LOGO_Y, "-130", doc, path + file)));
 			config.setHeightLogo(
@@ -318,6 +332,7 @@ public class Xml {
 			this.removeNode(doc, TAG_EMULATOR, TAG_HEIGHT_IMAGE, path, file);
 		
 			this.removeNode(doc, TAG_EMULATOR, TAG_WINDOW_BAR, path, file);
+			this.removeNode(doc, TAG_EMULATOR, TAG_ON_TOP, path, file);
 
 			nNode = doc.getElementsByTagName(TAG_EMULATOR).item(0);
 			final Element eElement = (Element) nNode;

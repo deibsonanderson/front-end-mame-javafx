@@ -25,6 +25,7 @@ import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Main.
  */
@@ -83,6 +84,23 @@ public class Main extends Application {
 
 	/** The media view. */
 	MediaView mediaView;
+	
+	/** The yes. */
+	private static String YES = "yes";
+	
+	private static String YES_LETTER = "y";
+	
+	private static String NO_LETTER = "n";
+	
+	/** The no. */
+	private static String NO = "no";
+	
+	/** The true. */
+	private static String TRUE = "true";
+	
+	/** The false. */
+	private static String FALSE = "false";
+	
 
 	/**
 	 * The main method.
@@ -210,11 +228,9 @@ public class Main extends Application {
 				this.mediaView.setFitWidth(config.getWidthVideo());
 				this.mediaView.setTranslateX(config.getEixoVideoX());
 				this.mediaView.setTranslateY(config.getEixoVideoY());
-				if ("false".equals(config.getVideoMute())) {
-					this.mediaPlayer.setMute(false);
-				} else {
-					this.mediaPlayer.setMute(true);
-				}
+
+				this.mediaPlayer.setMute(booleanCheck(config.getVideoMute()));
+				
 				this.mediaPlayer.setCycleCount(javafx.scene.media.MediaPlayer.INDEFINITE);
 				this.mediaPlayer.play();
 				return this.mediaView;
@@ -250,11 +266,9 @@ public class Main extends Application {
 			this.media = new Media(new File(path.toString()).toURI().toString());
 			this.mediaPlayer = new MediaPlayer(this.media);
 			this.mediaView.setMediaPlayer(this.mediaPlayer);
-			if ("false".equals(config.getVideoMute())) {
-				this.mediaPlayer.setMute(false);
-			} else {
-				this.mediaPlayer.setMute(true);
-			}
+			
+			this.mediaPlayer.setMute(booleanCheck(config.getVideoMute()));
+			
 			this.mediaPlayer.setCycleCount(javafx.scene.media.MediaPlayer.INDEFINITE);
 			this.mediaPlayer.play();
 		} else if (this.mediaPlayer != null) {
@@ -395,12 +409,13 @@ public class Main extends Application {
 		palco.setTitle(config.getTitle());
 		palco.setScene(cena);
 		palco.setResizable(false);
-		if ("true".equals(config.getMaximized())) {
-			palco.setMaximized(true);
-		} else {
-			palco.setMaximized(false);
-		}
-		if ("false".equals(config.getWindowBar())) {
+		
+		palco.setAlwaysOnTop(booleanCheck(config.getOnTop()));
+		palco.setMaximized(booleanCheck(config.getMaximized()));
+
+		if (NO.equalsIgnoreCase(config.getWindowBar()) || 
+				FALSE.equalsIgnoreCase(config.getWindowBar()) ||
+				NO_LETTER.equalsIgnoreCase(config.getWindowBar())){
 			palco.initStyle(StageStyle.UNDECORATED);
 		}
 		palco.show();
@@ -470,6 +485,11 @@ public class Main extends Application {
 		imagemScreem.setFitHeight(config.getHeightImage());
 	}
 	
+	/**
+	 * Inits the image screem default.
+	 *
+	 * @return the image view
+	 */
 	private ImageView initImageScreemDefault() {
 		final StringBuffer path = new StringBuffer(config.getImagePath());
 		path.append(config.getImageDefaut());
@@ -510,6 +530,20 @@ public class Main extends Application {
 		String retorno = game.getName().toUpperCase();
 		if(game.getDescription() != null && !game.getDescription().isEmpty()){
 			retorno = game.getDescription();
+		}
+		return retorno;
+	}
+	
+	/**
+	 * Boolean check.
+	 *
+	 * @param value the valor
+	 * @return true, if successful
+	 */
+	private boolean booleanCheck(final String value){
+		boolean retorno = false;
+		if(YES.equalsIgnoreCase(value) || TRUE.equalsIgnoreCase(value) || YES_LETTER.equalsIgnoreCase(value)){
+			retorno = true;
 		}
 		return retorno;
 	}

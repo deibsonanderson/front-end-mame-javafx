@@ -71,6 +71,8 @@ public class Config {
 	/** The window bar. */
 	private String windowBar;
 
+	/** The on top. */
+	private String onTop;
 	
 	/** The width logo. */
 	private Double widthImage;
@@ -492,36 +494,94 @@ public class Config {
 		this.videoPath = videoPath;
 	}
 
+	/**
+	 * Gets the width image.
+	 *
+	 * @return the width image
+	 */
 	public Double getWidthImage() {
 		return widthImage;
 	}
 
+	/**
+	 * Sets the width image.
+	 *
+	 * @param widthImage the new width image
+	 */
 	public void setWidthImage(Double widthImage) {
 		this.widthImage = widthImage;
 	}
 
+	/**
+	 * Gets the height image.
+	 *
+	 * @return the height image
+	 */
 	public Double getHeightImage() {
 		return heightImage;
 	}
 
+	/**
+	 * Sets the height image.
+	 *
+	 * @param heightImage the new height image
+	 */
 	public void setHeightImage(Double heightImage) {
 		this.heightImage = heightImage;
 	}
 
+	/**
+	 * Gets the eixo image Y.
+	 *
+	 * @return the eixo image Y
+	 */
 	public Integer getEixoImageY() {
 		return eixoImageY;
 	}
 
+	/**
+	 * Sets the eixo image Y.
+	 *
+	 * @param eixoImageY the new eixo image Y
+	 */
 	public void setEixoImageY(Integer eixoImageY) {
 		this.eixoImageY = eixoImageY;
 	}
 
+	/**
+	 * Gets the eixo image X.
+	 *
+	 * @return the eixo image X
+	 */
 	public Integer getEixoImageX() {
 		return eixoImageX;
 	}
 
+	/**
+	 * Sets the eixo image X.
+	 *
+	 * @param eixoImageX the new eixo image X
+	 */
 	public void setEixoImageX(Integer eixoImageX) {
 		this.eixoImageX = eixoImageX;
+	}
+
+	/**
+	 * Gets the on top.
+	 *
+	 * @return the on top
+	 */
+	public String getOnTop() {
+		return onTop;
+	}
+
+	/**
+	 * Sets the on top.
+	 *
+	 * @param onTop the new on top
+	 */
+	public void setOnTop(String onTop) {
+		this.onTop = onTop;
 	}
 	
 	
