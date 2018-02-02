@@ -7,6 +7,9 @@ package br.com.emulador;
  * The Class Config.
  */
 public class Config {
+	
+	/** The Constant PONTO. */
+	private static final String PONTO = ".";
 
 	/** The emu path. */
 	private String emuPath;
@@ -419,6 +422,17 @@ public class Config {
 	public void setTitle(final String title) {
 		this.title = title;
 	}
+	
+	private String checarPonto(final String valor){
+		String retorno;
+		if(valor != null){
+			retorno = valor.replace(".", "");
+			retorno = PONTO+retorno;
+		}else{
+			retorno = valor;
+		}
+		return retorno;
+	}
 
 	/**
 	 * Gets the image ext.
@@ -426,7 +440,7 @@ public class Config {
 	 * @return the image ext
 	 */
 	public String getImageExt() {
-		return this.imageExt;
+		return checarPonto(this.imageExt);
 	}
 
 	/**
@@ -464,7 +478,7 @@ public class Config {
 	 * @return the video ext
 	 */
 	public String getVideoExt() {
-		return videoExt;
+		return checarPonto(this.videoExt);
 	}
 
 	/**

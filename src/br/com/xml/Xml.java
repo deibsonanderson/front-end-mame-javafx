@@ -27,7 +27,6 @@ import org.xml.sax.SAXException;
 import br.com.emulador.Config;
 import br.com.emulador.Game;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Xml.
  *
@@ -152,6 +151,44 @@ public class Xml {
 	public File[] carregar(final String path) {
 		return this.dirListFiles(XML_EXTENSION, path);
 	}
+	
+	public File carregar(){
+		File file = null;
+		if(new File("frontmamefx.xml").exists()){
+			file = new File("frontmamefx.xml");
+		}else{
+			file = crearXMLFile();			
+		}
+		return file;
+	}
+	
+	public File crearXMLFile() {
+		File file = null;
+		try {
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			DocumentBuilder db = dbf.newDocumentBuilder();
+			Document document = db.newDocument();
+			Element emulator = document.createElement("emulator");
+			document.appendChild(emulator);
+			Element games = document.createElement("games");
+			Element config = document.createElement("config");
+			emulator.appendChild(config);
+			emulator.appendChild(games);
+			TransformerFactory tf = TransformerFactory.newInstance();
+			Transformer transformer = tf.newTransformer();
+			DOMSource source = new DOMSource(document);
+			StreamResult result = new StreamResult(new File("frontmamefx.xml"));
+			transformer.transform(source, result);
+			file = new File("frontmamefx.xml");
+		} catch (ParserConfigurationException ex) {
+			Logger.getLogger(Xml.class.getName()).log(Level.SEVERE, null, ex);
+		} catch (TransformerConfigurationException ex) {
+			Logger.getLogger(Xml.class.getName()).log(Level.SEVERE, null, ex);
+		} catch (TransformerException ex) {
+			Logger.getLogger(Xml.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		return file;
+	}
 
 	/**
 	 * Carregar games tag.
@@ -228,10 +265,10 @@ public class Xml {
 			config.setImagePath(this.getTagElement(eElement, TAG_IMAGEPATH, ".\\image\\", doc, path + file));
 			config.setTitle(this.getTagElement(eElement, TAG_TITLE, "Front End Mame JavaFX", doc, path + file));
 			config.setWidth(Integer.valueOf(this.getTagElement(eElement, TAG_WIDTH, "640", doc, path + file)));
-			config.setImageExt(this.getTagElement(eElement, TAG_IMAGEEXT, ".png", doc, path + file));
+			config.setImageExt(this.getTagElement(eElement, TAG_IMAGEEXT, "png", doc, path + file));
 			config.setImageDefaut(this.getTagElement(eElement, TAG_IMAGEDEFAUT, "imageNotFound", doc, path + file));
 
-			config.setVideoExt(this.getTagElement(eElement, TAG_VIDEOEXT, ".flv", doc, path + file));
+			config.setVideoExt(this.getTagElement(eElement, TAG_VIDEOEXT, "flv", doc, path + file));
 			config.setVideoPath(this.getTagElement(eElement, TAG_VIDEOPATH, ".\\video\\", doc, path + file));
 
 			config.setLogoPath(this.getTagElement(eElement, TAG_LOGOPATH, ".\\logo\\", doc, path + file));
@@ -264,7 +301,8 @@ public class Xml {
 
 		return config;
 	}
-
+	
+	
 	/**
 	 * Gets the tag element.
 	 *
@@ -351,13 +389,18 @@ public class Xml {
 	 * @return true, if successful
 	 */
 	private boolean hasTagEmulator(final String path, final File file) {
-		final boolean isValid = true;
-		final Document doc = this.documentFactory(path, file);
-		final NodeList nodeEmu = doc.getElementsByTagName(TAG_EMULATOR);
-		final NodeList nodeConfig = doc.getElementsByTagName(TAG_CONFIG);
-		if ((nodeEmu == null) && (nodeConfig == null)) {
-			doc.createElement(TAG_EMULATOR);
-			this.transFormeXML(doc, path + file);
+		boolean isValid = true;
+		Document doc = this.documentFactory(path, file);
+		if(doc == null){
+			crearXMLFile();
+			isValid = false;
+		}else{
+			final NodeList nodeEmu = doc.getElementsByTagName(TAG_EMULATOR);
+			final NodeList nodeConfig = doc.getElementsByTagName(TAG_CONFIG);
+			if ((nodeEmu == null) && (nodeConfig == null)) {
+				doc.createElement(TAG_EMULATOR);
+				this.transFormeXML(doc, path + file);
+			}
 		}
 		return isValid;
 	}
@@ -441,5 +484,6 @@ public class Xml {
 			Logger.getLogger(Xml.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
+
 
 }

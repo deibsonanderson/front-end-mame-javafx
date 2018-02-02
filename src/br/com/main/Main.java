@@ -146,11 +146,11 @@ public class Main extends Application {
 			this.raiz.getChildren().add(this.logoScreem);			
 		} else if (erro) {
 			final Label msgEmptyGames = new Label();
-			msgEmptyGames.setText("Ouve um erro no XML favor verificar a estrutura basica no README!");
+			msgEmptyGames.setText("Ouve um erro no frontmamefx.xml favor verificar a estrutura basica no README!");
 			this.raiz.getChildren().add(msgEmptyGames);
 		} else {
 			final Label msgEmptyGames = new Label();
-			msgEmptyGames.setText("Não foi localizado jogos, favor veridicar o XML de configuração!");
+			msgEmptyGames.setText("Não foi localizado jogos, favor verificar o XML de configuração!");
 			this.raiz.getChildren().add(msgEmptyGames);
 		}
 		this.initStage(this.stage, cena);
@@ -202,9 +202,12 @@ public class Main extends Application {
 	 *            the path
 	 */
 	private void initConfigXml(final String path) {
-		final File[] files = this.xml.carregar(path);
-		config = this.xml.carregarConfigTag(path, files[0]);
-		this.games = this.xml.carregarGamesTag(path, files[0]);
+		//final File[] files = this.xml.carregar(path);
+		//config = this.xml.carregarConfigTag(path, files[0]);
+		//this.games = this.xml.carregarGamesTag(path, files[0]);
+		final File file = this.xml.carregar();
+		config = this.xml.carregarConfigTag(path, file);
+		this.games = this.xml.carregarGamesTag(path, file);
 	}
 
 	/**
