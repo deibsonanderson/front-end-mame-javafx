@@ -187,7 +187,9 @@ public class Main extends Application {
 			public void changed(final ObservableValue<? extends Boolean> observable, final Boolean oldValue,
 					final Boolean newValue) {
 				if (observable.getValue() && (Main.this.mediaPlayer != null)) {
-					Main.this.mediaPlayer.play();
+					if(carregarFilePath(indice, new StringBuffer()).exists()){
+						Main.this.mediaPlayer.play();
+					}
 				} else if (Main.this.mediaPlayer != null) {
 					Main.this.mediaPlayer.pause();
 				}
@@ -245,6 +247,14 @@ public class Main extends Application {
 			return null;
 		}
 	}
+	
+	private File carregarFilePath(final int indice,final StringBuffer path){
+		path.append(config.getVideoPath());
+		path.append(this.games.get(indice).getName());
+		path.append(config.getVideoExt());
+		final File file = new File(path.toString());
+		return file;
+	}
 
 	/**
 	 * Change video.
@@ -254,12 +264,12 @@ public class Main extends Application {
 	 */
 	private void changeVideo(final int indice) {
 		if (this.mediaPlayer != null) {
-			this.mediaPlayer.stop();
+			this.mediaPlayer.stop();			
 		}
-		final StringBuffer path = new StringBuffer(config.getVideoPath());
-		path.append(this.games.get(indice).getName());
-		path.append(config.getVideoExt());
-		final File file = new File(path.toString());
+		final StringBuffer path = new StringBuffer();//config.getVideoPath());
+		//path.append(this.games.get(indice).getName());
+		//path.append(config.getVideoExt());
+		final File file = carregarFilePath(indice,path);//new File(path.toString());
 		if ((file != null) && file.exists()) {
 			if (this.mediaView == null) {
 				this.raiz.getChildren().add(this.initVideo(indice));
@@ -273,9 +283,10 @@ public class Main extends Application {
 			this.mediaPlayer.setMute(booleanCheck(config.getVideoMute()));
 			
 			this.mediaPlayer.setCycleCount(javafx.scene.media.MediaPlayer.INDEFINITE);
-			this.mediaPlayer.play();
+			this.mediaPlayer.play();			
 		} else if (this.mediaPlayer != null) {
 			this.mediaView.setVisible(false);
+			this.mediaPlayer.stop();
 		}
 	}
 
