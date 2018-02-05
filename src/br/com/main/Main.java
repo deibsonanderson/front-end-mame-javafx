@@ -336,13 +336,13 @@ public class Main extends Application {
 						Main.this.changeLogo(Main.this.indice);
 						break;
 					case PAGE_UP:
-						Main.this.indice = Main.this.indice + 10;
+						Main.this.indice = Main.this.indice - 10;
 						Main.this.imageScreem.setImage(Main.this.changeImagem(Main.this.indice));
 						Main.this.changeVideo(Main.this.indice);
 						Main.this.changeLogo(Main.this.indice);
 						break;
 					case PAGE_DOWN:
-						Main.this.indice = Main.this.indice - 10;
+						Main.this.indice = Main.this.indice + 10;
 						Main.this.imageScreem.setImage(Main.this.changeImagem(Main.this.indice));
 						Main.this.changeVideo(Main.this.indice);
 						Main.this.changeLogo(Main.this.indice);
