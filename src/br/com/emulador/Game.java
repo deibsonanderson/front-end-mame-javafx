@@ -14,6 +14,8 @@ public class Game implements Comparable<Game> {
 	/** The emulator. */
 	private String emulator;
 	
+	private String app;
+	
 	/**
 	 * Gets the name.
 	 *
@@ -95,6 +97,23 @@ public class Game implements Comparable<Game> {
 		super();
 		this.name = name;
 		this.emulator = emulator;
+	}
+	
+	
+	public Game(String name, String emulator, String description, String app) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.emulator = emulator;
+		this.app = app;
+	}
+
+	public String getApp() {
+		return app;
+	}
+
+	public void setApp(String app) {
+		this.app = app;
 	}
 
 	/**

@@ -132,6 +132,8 @@ public class Xml {
 
 	/** The Constant TAG_EMU_CUSTOM. */
 	private static final String TAG_EMU_CUSTOM = "emucustom";
+	
+	private static final String TAG_APP = "app";
 
 	/** The Constant TAG_DESCRIPTION. */
 	private static final String TAG_DESCRIPTION = "description";
@@ -205,7 +207,7 @@ public class Xml {
 			final int totalGames = doc.getElementsByTagName(TAG_GAME).getLength();
 			for (int f = 0; f < totalGames; f++) {
 				final Element game = (Element) doc.getElementsByTagName(TAG_GAME).item(f);
-				gameObj = new Game(game.getAttribute(TAG_NAME),game.getAttribute(TAG_EMU_CUSTOM),game.getAttribute(TAG_DESCRIPTION));
+				gameObj = new Game(game.getAttribute(TAG_NAME), game.getAttribute(TAG_EMU_CUSTOM), game.getAttribute(TAG_DESCRIPTION), game.getAttribute(TAG_APP));
 				games.add(gameObj);
 			}
 		} catch (final Exception ex) {

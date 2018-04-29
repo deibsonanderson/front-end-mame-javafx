@@ -1,37 +1,35 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<emulator>
-    <games>
-        <game description="Cadillacs and Dinosaurs" name="dino"/>
-        <game description="Super Street Fighter 2" emucustom="mame3.exe" name="ssf2"/>
-        <game emucustom="mameuifx32.0.128.exe" name="goldnaxe"/>
-    </games>
-    <config>
-        <emupath>.\mame\</emupath>
-        <exec>mame.exe</exec>
-        <height>400</height>
-        <imagepath>.\mame\imagem\</imagepath>
-        <title>Front End Mame JavaFX</title>
-        <width>600</width>
-        <imageext>.png</imageext>
-        <imagedefaut>plantilla</imagedefaut>
-        <videoext>.flv</videoext>
-        <videopath>.\mame\video\</videopath>
-        <logopath>.\mame\logo\</logopath>
-        <eixovideox>0</eixovideox>
-        <eixovideoy>0</eixovideoy>
-        <heightvideo>270</heightvideo>
-        <widthvideo>330</widthvideo>
-        <eixologox>0</eixologox>
-        <eixologoy>-130</eixologoy>
-        <heightlogo>100</heightlogo>
-        <widthlogo>200</widthlogo>
-        <eixoimagex>0</eixoimagex>
-        <eixoimagey>-30</eixoimagey>
-        <heightimage>270</heightimage>
-        <widthimage>330</widthimage>
-        <videomute>no</videomute>
-        <maximized>no</maximized>
-        <windowbar>no</windowbar>
-        <ontop>yes</ontop>
-    </config>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><emulator>
+   <games>
+      <game description="Cadillacs and Dinosaurs" name="dino"/>
+      <game description="Super Street Fighter 2" emucustom="mame3.exe" name="ssf2"/>
+      <game emucustom="mameuifx32.0.128.exe" name="goldnaxe"/>
+      <game app="C:\Users\deibson_magali\Desktop\SFXMMv2_EU.exe" name="MMVSSF"/>
+   </games>
+   <config>
+      <emupath>.\mame\</emupath>
+      <exec>mame.exe</exec>
+      <height>400</height>
+      <imagepath>.\mame\imagem\</imagepath>
+      <title>Front End Mame JavaFX</title>
+      <width>600</width>
+      <imageext>.png</imageext>
+      <imagedefaut>imageNotFound</imagedefaut>
+      <videoext>.flv</videoext>
+      <videopath>.\mame\video\</videopath>
+      <logopath>.\mame\logo\</logopath>
+      <eixovideox>0</eixovideox>
+      <eixovideoy>0</eixovideoy>
+      <heightvideo>480</heightvideo>      
+      <widthvideo>640</widthvideo>
+
+      <eixologox>100</eixologox>
+      <eixologoy>100</eixologoy>
+      <heightlogo>200</heightlogo>
+      <widthlogo>400</widthlogo>
+      <eixoimagex>0</eixoimagex>
+      <eixoimagey>0</eixoimagey>
+      <heightimage>480</heightimage>
+      <widthimage>640</widthimage>
+      
+   <videomute>no</videomute><maximized>no</maximized><windowbar>no</windowbar><ontop>no</ontop></config>
 </emulator>

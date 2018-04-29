@@ -26,12 +26,15 @@ public class Emulator {
 	 * @param exec the exec
 	 */
 	public void run(final Game game, final String path, final String exec) {
-
-		final StringBuilder cmd = new StringBuilder(path);
-		cmd.append(emulatorCurtomCheck(game,path, exec));
-		cmd.append(ESPACO);
-		cmd.append(game.getName());
-
+		final StringBuilder cmd = new StringBuilder();
+		if(game.getApp() != null && game.getApp().isEmpty()){			
+			cmd.append(path);
+			cmd.append(emulatorCurtomCheck(game,path, exec));
+			cmd.append(ESPACO);
+			cmd.append(game.getName());
+		}else{
+			cmd.append(game.getApp());
+		}
 		try {
 			Runtime.getRuntime().exec(cmd.toString(), null, new File(path));
 		} catch (final IOException ex) {
